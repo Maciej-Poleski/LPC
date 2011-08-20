@@ -7,7 +7,6 @@ ExamplesTableModel::ExamplesTableModel (QString name, QObject* parent) :
     QSqlTableModel (parent, SqlDatabaseFactory::getDatabase (name))
 {
     setTable ("examples");
-    setEditStrategy (QSqlTableModel::OnRowChange);
+    setEditStrategy (QSqlTableModel::OnManualSubmit);
     select();
-    removeColumn (1);
 }

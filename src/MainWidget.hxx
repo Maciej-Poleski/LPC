@@ -5,6 +5,8 @@
 
 #include <QtGui/QWidget>
 
+#include <QtGui/QAbstractItemView>
+
 #include "DatabaseException.hxx"
 
 class ExamplesTableModel;
@@ -28,6 +30,20 @@ public:
      **/
     explicit MainWidget (QWidget* parent = 0, Qt::WindowFlags f = 0)
     throw (DatabaseException);
+
+private slots:
+    /**
+     * @brief Pokazuje małe okno dialogowe pozwalające na podgląd i modyfikacje wybranego przykładu
+     *
+     * @param index Wybrany przykład
+     **/
+    void showSelectedExample(const QModelIndex &index);
+    /**
+     * @brief Pokazuje małe okno dialogowe pozwalające na stworzenie nowego przykładu.
+     *
+     **/
+    void addNewExample();
+
 private:
     QPushButton* addExampleButton;
     QTableView* examplesView;
