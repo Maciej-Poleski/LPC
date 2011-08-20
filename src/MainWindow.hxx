@@ -5,9 +5,8 @@
 
 #include <QtGui/QMainWindow>
 
-class ExamplesTableModel;
-class QTableView;
-class QDataWidgetMapper;
+class MainWidget;
+
 
 /**
  * @brief Główne okno aplikacji.
@@ -18,16 +17,12 @@ class MainWindow : public QMainWindow
 public:
     /**
      * @brief Przejmuje obowiązek zamkniecia bazy danych.
-     *
-     * @param database ...
      **/
     MainWindow () throw(std::bad_alloc);
     virtual ~MainWindow();
 
 private:
-    ExamplesTableModel *model;
-    QTableView *view;
-    QDataWidgetMapper *mapper;
+    MainWidget *centralWidget;
 };
 
 #endif // MAINWINDOW_HXX

@@ -1,6 +1,6 @@
 
-set(INPUT_SOURCE_FILES DatabaseException.cxx ExamplesTableModel.cxx SqlDatabaseFactory.cxx MainWindow.cxx)
-set(INPUT_HEADER_FILES DatabaseException.hxx ExamplesTableModel.hxx SqlDatabaseFactory.hxx MainWindow.hxx)
+set(INPUT_SOURCE_FILES MainWidget.cxx DatabaseException.cxx ExamplesTableModel.cxx SqlDatabaseFactory.cxx MainWindow.cxx)
+set(INPUT_HEADER_FILES MainWidget.hxx DatabaseException.hxx ExamplesTableModel.hxx SqlDatabaseFactory.hxx MainWindow.hxx)
 set(OUTPUT_SOURCE_FILES ${INPUT_SOURCE_FILES})
 set(OUTPUT_HEADER_FILES ${INPUT_HEADER_FILES})
 

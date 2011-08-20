@@ -4,15 +4,14 @@
 
 #include <QtSql/QSqlQuery>
 
-#include <QtCore/QDebug>
-
 QSqlDatabase SqlDatabaseFactory::getDatabase (QString name)
 throw (DatabaseException)
 {
-    QSqlDatabase database = QSqlDatabase::addDatabase ("QSQLITE",name);
+    QSqlDatabase database = QSqlDatabase::addDatabase ("QSQLITE", name);
     database.setDatabaseName (name);
     if (database.open() == false) {
-        throw DatabaseException ("Próba otwarcia bazy danych nie powiodła się",database.lastError());
+        throw DatabaseException ("Próba otwarcia bazy danych nie powiodła się",
+                                 database.lastError());
     }
 
     if (QSqlQuery ("SELECT * FROM examples", database).exec() == false) {

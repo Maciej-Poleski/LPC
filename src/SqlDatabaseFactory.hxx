@@ -7,6 +7,10 @@
 
 #include "DatabaseException.hxx"
 
+/**
+ * @brief Odpowiada za dostarczenie połączenia do bazy danych.
+ * Odpowiada również za ewentualne stworzenie i zainicjalizowanie tej bazy.
+ **/
 class SqlDatabaseFactory
 {
 public:

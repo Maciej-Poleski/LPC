@@ -7,6 +7,10 @@
 #include <QtCore/QString>
 #include <QtSql/QSqlError>
 
+/**
+ * @brief Wyjątek sygnalizuje błąd podczas pracy z bazą danych.
+ * Zgodny wstecz z ISO C++
+ **/
 class DatabaseException : public std::runtime_error
 {
 
@@ -20,8 +24,18 @@ public:
     explicit DatabaseException (QString message, QSqlError error = QSqlError()) throw();
     virtual ~DatabaseException() throw();
 
+    /**
+     * @brief Zwraca QSqlError związany z wyjątkiem
+     *
+     * @return QSqlError
+     **/
     virtual QSqlError getError() const throw();
 
+    /**
+     * @brief Zwraca QSqlError związany z wyjątkiem
+     *
+     * @return QSqlError
+     **/
     virtual operator QSqlError() const throw();
 
 private:

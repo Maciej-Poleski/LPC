@@ -6,6 +6,9 @@
 #include <QSqlTableModel>
 
 
+/**
+ * @brief Reprezentuje przykłady z bazy danych użytkownika.
+ **/
 class ExamplesTableModel : public QSqlTableModel
 {
 
