@@ -9,3 +9,9 @@ add_subdirectory(src)
 
 add_executable(lpc main.cxx)
 target_link_libraries(lpc LPCCore ${QT_LIBRARIES})
+
+install(TARGETS lpc
+RUNTIME DESTINATION bin
+LIBRARY DESTINATION lib
+ARCHIVE DESTINATION lib
+)
