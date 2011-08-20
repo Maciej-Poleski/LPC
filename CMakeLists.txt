@@ -11,7 +11,10 @@ add_executable(lpc main.cxx)
 target_link_libraries(lpc LPCCore ${QT_LIBRARIES})
 
 install(TARGETS lpc
-RUNTIME DESTINATION bin
-LIBRARY DESTINATION lib
-ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
 )
+
+set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib
+                                     BUILD_WITH_INSTALL_RPATH TRUE)
