@@ -8,10 +8,18 @@
 class DatabaseException;
 class MainWidget;
 
+#ifdef _WIN32
+#ifdef LPCCore_EXPORTS
+#define WIN32_EXPORT __declspec(dllexport)
+#else
+#define WIN32_EXPORT __declspec(dllimport)
+#endif
+#endif
+
 /**
  * @brief Główne okno aplikacji.
  **/
-class MainWindow : public QMainWindow
+class WIN32_EXPORT MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
