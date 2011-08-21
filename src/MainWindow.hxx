@@ -14,6 +14,8 @@ class MainWidget;
 #else
 #define WIN32_EXPORT __declspec(dllimport)
 #endif
+#else
+#define WIN32_EXPORT
 #endif
 
 /**
