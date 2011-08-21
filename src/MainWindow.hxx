@@ -5,8 +5,8 @@
 
 #include <QtGui/QMainWindow>
 
+class DatabaseException;
 class MainWidget;
-
 
 /**
  * @brief Główne okno aplikacji.
@@ -18,7 +18,7 @@ public:
     /**
      * @brief Przejmuje obowiązek zamkniecia bazy danych.
      **/
-    MainWindow () throw(std::bad_alloc);
+    MainWindow () throw(std::bad_alloc,DatabaseException);
     virtual ~MainWindow();
 
 private:

@@ -4,6 +4,7 @@
 #include <QtSql/QSqlDatabase>
 
 #include "src/MainWindow.hxx"
+#include "src/DatabaseException.hxx"
 
 int main (int argc, char** argv)
 {
@@ -21,8 +22,24 @@ int main (int argc, char** argv)
         return 1;
     }
 
-    MainWindow mainWindow;
-    mainWindow.show();
+    try {
 
-    return app.exec();
+        MainWindow mainWindow;
+        mainWindow.show();
+
+        return app.exec();
+    } catch (const DatabaseException& exception) {
+        QMessageBox::critical (0, "Błąd bazy danych", QString ("Nastąpił wyjątek"
+                               " podczas pracy z bazą danych, nie mogę"
+                               " kontynuować.\n\nstd::what(): ") + exception.what() +
+                               "\n\nKomunikat SQL: " +
+                               exception.getError().text());
+        return 2;
+    } catch (...) {
+        QMessageBox::critical (0, "Niezidentyfikowany wyjątek", "Wystąpił"
+                               " niezidentyfikowany wyjątek. Nie potrafię podać"
+                               " jego przyczyny. Nie mogę kontynuować.");
+        return -1;
+    }
+
 }

@@ -3,7 +3,7 @@
 #include "MainWindow.hxx"
 #include "MainWidget.hxx"
 
-MainWindow::MainWindow () throw (std::bad_alloc) : QMainWindow()
+MainWindow::MainWindow () throw (std::bad_alloc,DatabaseException) : QMainWindow()
 {
     centralWidget = new MainWidget();
     setCentralWidget (centralWidget);

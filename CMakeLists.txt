@@ -5,6 +5,16 @@ find_package(Qt4 4.7.1 REQUIRED QtCore QtGui QtSql)
 
 include(${QT_USE_FILE})
 
+######## GLOBAL CONFIGURATION ##################################################
+
+if(MSVC)
+    add_definitions(-DWIN32_EXPORT="__declspec(dllexport)")
+else(MSVC)
+    add_definitions(-DWIN32_EXPORT="")
+endif(MSVC)
+
+######## GLOBAL CONFIGURATION END ##############################################
+
 add_subdirectory(src)
 
 add_executable(lpc main.cxx)
