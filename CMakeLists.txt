@@ -28,7 +28,6 @@ set(CPACK_STRIP_FILES TRUE)
 
 include(CPack)
 include(GNUInstallDirs)
-include(GetPrerequisites)
 include(InstallRequiredSystemLibraries)
 
 ######## GLOBAL CONFIGURATION END ##############################################
@@ -49,6 +48,10 @@ install(TARGETS lpc
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
+
+get_target_property(IMP ${QT_QTCORE_LIBRARY} IMPORTED_LOCATION)
+message(${QT_QTCORE_LIBRARY})
+message(${IMP})
 
 set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}
                                      BUILD_WITH_INSTALL_RPATH TRUE)
