@@ -28,6 +28,8 @@ set(CPACK_STRIP_FILES TRUE)
 
 include(CPack)
 include(GNUInstallDirs)
+include(GetPrerequisites)
+include(InstallRequiredSystemLibraries)
 
 ######## GLOBAL CONFIGURATION END ##############################################
 
