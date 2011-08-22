@@ -2,3 +2,13 @@
 #define VERSION_MAJOR ${VERSION_MAJOR}
 #define VERSION_MINOR ${VERSION_MINOR}
 #define VERSION_PATCH ${VERSION_PATH}
+
+#ifdef _WIN32
+#ifdef LPCCore_EXPORTS
+#define WIN32_EXPORT __declspec(dllexport)
+#else
+#define WIN32_EXPORT __declspec(dllimport)
+#endif
+#else
+#define WIN32_EXPORT
+#endif

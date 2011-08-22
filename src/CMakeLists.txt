@@ -4,6 +4,8 @@ set(INPUT_HEADER_FILES ExampleDialog.hxx MainWidget.hxx DatabaseException.hxx Ex
 set(OUTPUT_SOURCE_FILES ${INPUT_SOURCE_FILES})
 set(OUTPUT_HEADER_FILES ${INPUT_HEADER_FILES})
 
+include_directories(${CMAKE_BINARY_DIR}/src)
+
 qt4_wrap_cpp(OUTPUT_SOURCE_FILES ${INPUT_HEADER_FILES})
 
 add_library(LPCCore SHARED ${OUTPUT_SOURCE_FILES})

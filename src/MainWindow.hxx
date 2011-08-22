@@ -5,18 +5,10 @@
 
 #include <QtGui/QMainWindow>
 
+#include "config.h"
+
 class DatabaseException;
 class MainWidget;
-
-#ifdef _WIN32
-#ifdef LPCCore_EXPORTS
-#define WIN32_EXPORT __declspec(dllexport)
-#else
-#define WIN32_EXPORT __declspec(dllimport)
-#endif
-#else
-#define WIN32_EXPORT
-#endif
 
 /**
  * @brief Główne okno aplikacji.
