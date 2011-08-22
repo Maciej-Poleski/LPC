@@ -1,5 +1,5 @@
 project(LPC)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.5 FATAL_ERROR)
 
 ######## GLOBAL CONFIGURATION ##################################################
 
@@ -27,6 +27,7 @@ set(CPACK_PACKAGE_EXECUTABLES lpc;LPC)
 set(CPACK_STRIP_FILES TRUE)
 
 include(CPack)
+include(GNUInstallDirs)
 
 ######## GLOBAL CONFIGURATION END ##############################################
 
@@ -42,10 +43,10 @@ add_executable(lpc WIN32 main.cxx)
 target_link_libraries(lpc LPCCore ${QT_LIBRARIES})
 
 install(TARGETS lpc
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib
+set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}
                                      BUILD_WITH_INSTALL_RPATH TRUE)
