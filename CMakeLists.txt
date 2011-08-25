@@ -56,9 +56,10 @@ else(${WIN32})
     set(EXE ${CMAKE_INSTALL_FULL_BINDIR}/lpc)
 endif(${WIN32})
 
-set(DIRS ${QT_LIBRARY_DIR} ${CMAKE_INSTALL_FULL_BINDIR} ${CMAKE_INSTALL_FULL_LIBDIR})
+set(DIRS ${QT_LIBRARY_DIR} ${CMAKE_INSTALL_FULL_BINDIR} ${CMAKE_INSTALL_FULL_LIBDIR} ${CMAKE_CURRENT_BINARY_DIR}/src)
 
-install(CODE "include(BundleUtilities)
+install(CODE "include(InstallRequiredSystemLibraries)
+              include(BundleUtilities)
               fixup_bundle(\"${EXE}\" \"\" \"${DIRS}\")")
 
 set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}
