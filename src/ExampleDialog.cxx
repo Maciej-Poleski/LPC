@@ -7,15 +7,8 @@
 #include <QtGui/QTextEdit>
 #include <QtGui/QGridLayout>
 #include <QtGui/QDataWidgetMapper>
-#include <QtGui/QStyledItemDelegate>
 
 #include "ExamplesTableModel.hxx"
-
-class ExampleDialog::Delegate : public QStyledItemDelegate
-{
-    virtual void setModelData (QWidget* editor, QAbstractItemModel* model,
-                               const QModelIndex& index) const;
-};
 
 ExampleDialog::ExampleDialog (QWidget* parent, Qt::WindowFlags f) :
     QDialog (parent, f), dataWidgetMapper (0)
@@ -46,7 +39,6 @@ void ExampleDialog::setup (ExamplesTableModel* model, const QModelIndex& index)
     dataWidgetMapper = new QDataWidgetMapper (this);
     dataWidgetMapper->setSubmitPolicy (QDataWidgetMapper::ManualSubmit);
     dataWidgetMapper->setModel (model);
-    dataWidgetMapper->setItemDelegate (new Delegate);
     dataWidgetMapper->addMapping (commentTextEdit, 0);
     dataWidgetMapper->addMapping (codeTextEdit, 1);
     dataWidgetMapper->setCurrentModelIndex (index);
@@ -62,14 +54,5 @@ void ExampleDialog::reject()
 {
     dataWidgetMapper->revert();
     QDialog::reject();
-}
-
-void ExampleDialog::Delegate::setModelData (QWidget* editor,
-        QAbstractItemModel* model, const QModelIndex& index) const
-{
-    if (index.column() == 0)
-        model->setData (index, static_cast<QTextEdit*> (editor)->toPlainText());
-    else
-        QStyledItemDelegate::setModelData (editor, model, index);
 }
 

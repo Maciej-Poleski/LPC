@@ -20,8 +20,6 @@ class ExampleDialog : public QDialog
 {
     Q_OBJECT
 
-    class Delegate;
-
 public:
     explicit ExampleDialog (QWidget* parent = 0, Qt::WindowFlags f = 0);
     /**

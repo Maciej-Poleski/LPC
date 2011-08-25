@@ -7,7 +7,7 @@ set(QT_USE_IMPORTED_TARGETS TRUE)
 
 set(VERSION_MAJOR "1")
 set(VERSION_MINOR "0")
-set(VERSION_PATCH "1")
+set(VERSION_PATCH "2")
 set(VERSION_STRING ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 set(CPACK_PACKAGE_NAME "Klient Prototypera Języka")
@@ -29,6 +29,7 @@ set(CPACK_STRIP_FILES TRUE)
 include(CPack)
 include(GNUInstallDirs)
 include(InstallRequiredSystemLibraries)
+include(BundleUtilities)
 
 ######## GLOBAL CONFIGURATION END ##############################################
 
@@ -52,3 +53,4 @@ install(TARGETS lpc
 
 set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}
                                      BUILD_WITH_INSTALL_RPATH TRUE)
+

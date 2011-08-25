@@ -2,14 +2,23 @@
 
 #include "MainWidget.hxx"
 
+#include <QtCore/QDebug>
+
 #include <QtGui/QPushButton>
 #include <QtGui/QTableView>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QHeaderView>
+#include <QtGui/QStyledItemDelegate>
+#include <QtGui/QTextDocument>
 
 #include "ExamplesTableModel.hxx"
 #include "DatabaseException.hxx"
 #include "ExampleDialog.hxx"
+
+class MainWidget::Delegate : public QStyledItemDelegate
+{
+    virtual QString displayText(const QVariant& value, const QLocale& locale) const;
+};
 
 MainWidget::MainWidget (QWidget* parent, Qt::WindowFlags f) throw (DatabaseException) :
     QWidget (parent, f), examplesModel (0)
@@ -27,9 +36,16 @@ MainWidget::MainWidget (QWidget* parent, Qt::WindowFlags f) throw (DatabaseExcep
     examplesView->setModel (examplesModel);
     examplesView->setColumnHidden (1, true);
     examplesView->setEditTriggers (QAbstractItemView::NoEditTriggers);
+    delegate=new Delegate;
+    examplesView->setItemDelegateForColumn(0,delegate);
 
     connect (examplesView, SIGNAL (clicked (QModelIndex)), this, SLOT (showSelectedExample (QModelIndex)));
     connect (addExampleButton, SIGNAL (clicked (bool)), this, SLOT (addNewExample()));
+}
+
+MainWidget::~MainWidget()
+{
+    delete delegate;
 }
 
 void MainWidget::showSelectedExample (const QModelIndex& index)
@@ -52,3 +68,11 @@ void MainWidget::addNewExample()
     else
         examplesModel->revertAll();
 }
+
+QString MainWidget::Delegate::displayText(const QVariant& value, const QLocale& locale) const
+{
+    QTextDocument document;
+    document.setHtml(QStyledItemDelegate::displayText(value, locale));
+    return document.toPlainText().split("\n",QString::SkipEmptyParts).join(" ");
+}
+

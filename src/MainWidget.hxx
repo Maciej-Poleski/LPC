@@ -21,6 +21,9 @@ class QVBoxLayout;
 class MainWidget : public QWidget
 {
     Q_OBJECT
+
+    class Delegate;
+
 public:
     /**
      * @brief Inicjalizuje widget tworząc model i widok bazy danych użytkownika.
@@ -30,6 +33,7 @@ public:
      **/
     explicit MainWidget (QWidget* parent = 0, Qt::WindowFlags f = 0)
     throw (DatabaseException);
+    virtual ~MainWidget();
 
 private slots:
     /**
@@ -48,6 +52,7 @@ private:
     QPushButton* addExampleButton;
     QTableView* examplesView;
     QVBoxLayout* layout;
+    Delegate *delegate;
 
     ExamplesTableModel* examplesModel;
 };
