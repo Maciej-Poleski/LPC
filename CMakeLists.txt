@@ -29,7 +29,6 @@ set(CPACK_STRIP_FILES TRUE)
 include(CPack)
 include(GNUInstallDirs)
 include(InstallRequiredSystemLibraries)
-include(BundleUtilities)
 
 ######## GLOBAL CONFIGURATION END ##############################################
 
@@ -50,6 +49,15 @@ install(TARGETS lpc
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
+
+if(${WIN32})
+    set(EXE ${CMAKE_INSTALL_FULL_BINDIR}/lpc.exe)
+else(${WIN32})
+    set(EXE ${CMAKE_INSTALL_FULL_BINDIR}/lpc)
+endif(${WIN32})
+
+install(CODE "include(BundleUtilities)
+              fixup_bundle(\"${EXE}\" \"\" \"${QT_LIBRARY_DIR}\")")
 
 set_target_properties(lpc PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}
                                      BUILD_WITH_INSTALL_RPATH TRUE)
