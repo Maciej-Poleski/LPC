@@ -58,6 +58,7 @@ endif(${WIN32})
 
 set(DIRS ${QT_LIBRARY_DIR} ${CMAKE_INSTALL_FULL_BINDIR} ${CMAKE_INSTALL_FULL_LIBDIR} ${CMAKE_CURRENT_BINARY_DIR}/src)
 
+# TODO Trzeba uwzględnić plugin SQLite
 install(CODE "include(InstallRequiredSystemLibraries)
               include(BundleUtilities)
               fixup_bundle(\"${EXE}\" \"\" \"${DIRS}\")")

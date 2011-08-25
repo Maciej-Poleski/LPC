@@ -3,7 +3,7 @@
 #ifndef EXAMPLESTABLEMODEL_HXX
 #define EXAMPLESTABLEMODEL_HXX
 
-#include <QSqlTableModel>
+#include <QtSql/QSqlTableModel>
 
 
 /**
