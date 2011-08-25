@@ -1,4 +1,2 @@
-Nie nale¿y konwertowaæ komentarzy do czystego tekstu - usuwa to znaki nowej linii.
-U¿yæ delegacji do wyœwiatlania HTML w QTableView (lub innego skutecznego rozwi¹zania).
-Zwiêkszyæ mo¿liwoœci edycyjne kodu (dodaæ przyciski do podstawowego formatowania kodu).
-Zapisywaæ ustawienia okna do plików konfiguracyjnych.
+ZwiÄ™kszyÄ‡ moÅ¼liwoÅ›ci edycyjne kodu (dodaÄ‡ przyciski do podstawowego formatowania kodu).
+ZapisywaÄ‡ ustawienia okna do plikÃ³w konfiguracyjnych.
